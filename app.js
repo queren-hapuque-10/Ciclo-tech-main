@@ -132,7 +132,8 @@ app.get('/sobre',(req,res)=>{
 
 // ----> CRUD CADASTRO RECYCLE
 
-    app.post('/recycle',(req,res)=>{
+
+app.post('/recycle',(req,res)=>{
     CadRecycle.create({
     nome_cliente: req.body.nome_cliente,
     cpf: req.body.cpf,
@@ -145,20 +146,20 @@ app.get('/sobre',(req,res)=>{
    });
 });
 
-/*
+
     app.get('/detalhesRec',(req,res)=>{
-        res.render('preDetailsRec');
+        res.render('PreDetailsR');
     });
     
     app.post("/detalhesRec",(req,res)=>{
         CadRecycle.findOne({where:{'email':req.body.email}}).then((cliente)=>{
-            res.render('detailsRec',{cliente:cliente})
+            res.render('detailsRecycle',{cliente:cliente})
         });  
         
     });
 
     app.get('/deletarRec',(req,res)=>{
-        res.render('deleteRec');
+        res.render('deletarRec');
     });
     
     app.post('/deletarRec',(req,res)=>{
@@ -167,11 +168,12 @@ app.get('/sobre',(req,res)=>{
     });
 
     app.get('/atualizarRec',(req,res)=>{
-        res.render('preEditRec');      
+        res.render('preEdit');      
 });
 
+
 app.post('/atualizarRec',(req,res)=>{
- CadRecycle.findOne({where:{'email':req.body.email}}).then((cliente)=>{
+ CadRecycle.findOne({where:{'cpf':req.body.cpf}}).then((cliente)=>{
     res.render('atualizarRec',{cliente:cliente});
 });
 
@@ -185,9 +187,11 @@ CadRecycle.update({
     email: req.body.email,
     descricao: req.body.descricao 
 },
-{where:{'email':req.body.email}},
+{where:{'cpf':req.body.cpf}},
  res.send("Atualizado com sucesso"))
 });
+
+/*
 
 // --- > CRUD PRODUTOS
 
@@ -214,7 +218,7 @@ app.post('/cadproduto',(req,res)=>{
 app.get('/loja/:id',(req,res)=>{
    Produto.destroy({
        where:{'id': req.params.id}}).then(()=>{
-           res.send("<h1 style='margin: 12rem 40rem;'>PRODUTO DELETADO COM SUCESSO</H1>")
+           res.send("<h2 style='margin: 12rem 40rem;'>PRODUTO DELETADO COM SUCESSO!!</h2>")
        });     
 });
 
@@ -247,6 +251,6 @@ router.post('/editarProduto/:id',(req,res)=>{
           res.send("<h1 style='margin: 12rem 40rem;'>PRODUTO EDITADO COM SUCESSO</H1>")
            
    )})
-*/
 
+*/
 app.listen(port);
